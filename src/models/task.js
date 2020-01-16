@@ -1,21 +1,82 @@
 const mongoose = require('mongoose')
 
 const taskSchema = new mongoose.Schema({
-    description: {
-        type: String,
-        required: true,
-        trim: true
+    "meta": {
+      "data_version": {
+        "type": "Number"
+      },
+      "created": {
+        "type": "Date"
+      },
+      "revision": {
+        "type": "Number"
+      }
     },
-    completed: {
-        type: Boolean,
-        default: false
+    "info": {
+      "city": {
+        "type": "String"
+      },
+      "dates": {
+        "type": [
+          "String"
+        ]
+      },
+      "gender": {
+        "type": "String"
+      },
+      "match_type": {
+        "type": "String"
+      },
+      "outcome": {
+        "by": {
+          "runs": {
+            "type": "Number"
+          }
+        },
+        "winner": {
+          "type": "String"
+        }
+      },
+      "overs": {
+        "type": "Number"
+      },
+      "player_of_match": {
+        "type": [
+          "String"
+        ]
+      },
+      "teams": {
+        "type": [
+          "String"
+        ]
+      },
+      "toss": {
+        "decision": {
+          "type": "String"
+        },
+        "winner": {
+          "type": "String"
+        }
+      },
+      "umpires": {
+        "type": [
+          "String"
+        ]
+      },
+      "venue": {
+        "type": "String"
+      }
     },
-    owner: {
+    "innings": {
+      "type": [
+        "Mixed"
+      ]
+    }, owner: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
     }
-}, {
+  }, {
     timestamps: true
 })
 
